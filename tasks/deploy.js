@@ -22,6 +22,8 @@ gulp.task('deploy:commit', function (done) {
   msg = msg || 'Production build';
   /*jshint quotmark:false */
   var cmd = ["git add .", "git commit -m '" + msg + "'", "git status"];
+  console.log(cmd);
+    console.log(cmd.join(' && '));
   /*jshint quotmark:true */
   exec(cmd.join(' && '), {cwd: path.join(process.cwd(), 'dist')}, function (err, stdout, stderr) {
     if (!/working directory clean/m.test(stdout)) {
